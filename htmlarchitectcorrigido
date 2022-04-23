@@ -335,7 +335,7 @@
                 <tr valign="top">
                     <td class="tdTableDefinition">cpf_supervisor
                 &nbsp;(<a href="#funcionario">FK</a>)
-              </td><td class="tdTableDefinition">cpf_supervisor</td><td class="tdTableDefinition">CHAR</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+              </td><td class="tdTableDefinition">cpf_supervisor</td><td class="tdTableDefinition">CHAR</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap></td>
                 </tr>
                 <tr>
                     <td colspan="4">

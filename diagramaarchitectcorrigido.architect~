@@ -197,8 +197,8 @@
    <relationship id="REL58" populated="true" UUID="b98476ee-4a48-4177-a0c8-4b183e204e75" deferrability="7" deleteRule="3" fk-table-ref="TAB47" fkCardinality="7" identifying="true" name="funcionario_trabalha_em_fk" physicalName="funcionario_trabalha_em_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP59" populated="true" UUID="badbe9fb-cbac-4fb0-a679-bf714d8d67e7" fk-column-ref="COL48" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
-   <relationship id="REL60" populated="true" UUID="a1961816-56d0-4e79-9809-1c9d7c23004f" deferrability="7" deleteRule="3" fk-table-ref="TAB1" fkCardinality="3" identifying="false" name="funcionario_funcionario_fk" physicalName="funcionario_funcionario_fk" pk-table-ref="TAB1" pkCardinality="6" updateRule="3" >
-    <column-mapping id="CMP61" populated="true" UUID="15985831-90ea-4767-93ec-26908c4f3b61" fk-column-ref="COL11" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
+   <relationship id="REL60" populated="true" UUID="a1961816-56d0-4e79-9809-1c9d7c23004f" deferrability="7" deleteRule="3" fk-table-ref="TAB1" fkCardinality="7" identifying="false" name="funcionario_funcionario_fk" physicalName="funcionario_funcionario_fk" pk-table-ref="TAB1" pkCardinality="6" updateRule="3" >
+    <column-mapping id="CMP61" populated="true" UUID="3792d8a7-9860-4763-9ec9-e0df5d924ccc" fk-column-ref="COL11" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
    <relationship id="REL62" populated="true" UUID="5e0fef33-de16-4248-93f3-29453153fef4" deferrability="7" deleteRule="3" fk-table-ref="TAB32" fkCardinality="7" identifying="true" name="departamento_localizacoes_departamento_fk" physicalName="departamento_localizacoes_departamento_fk" pk-table-ref="TAB23" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP63" populated="true" UUID="1ece7b35-9c35-4c0c-b6f3-a0ac381c62a1" fk-column-ref="COL33" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL24" />

@@ -323,16 +323,6 @@
                     </td>
                 </tr>
                 <tr valign="top">
-                    <td class="tdTableDefinition">numero_departamento
-                &nbsp;(<a href="#departamento">FK</a>)
-              </td><td class="tdTableDefinition">numero_departamento</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <div class="comment">N&uacute;mero do departamento do funcion&aacute;rio.</div>
-                    </td>
-                </tr>
-                <tr valign="top">
                     <td class="tdTableDefinition">cpf_supervisor
                 &nbsp;(<a href="#funcionario">FK</a>)
               </td><td class="tdTableDefinition">cpf_supervisor</td><td class="tdTableDefinition">CHAR</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap></td>
@@ -348,9 +338,6 @@
                 <ul>
                     <li>
                         <a href="#funcionario">funcionario</a> through (cpf_supervisor)
-                    </li>
-                    <li>
-                        <a href="#departamento">departamento</a> through (numero_departamento)
                     </li>
                 </ul>
                 <p class="subTitle">Referenced By</p>
@@ -518,6 +505,16 @@
                         <div class="comment">Horas trabalhadas pelo funcion&aacute;rio neste projeto.</div>
                     </td>
                 </tr>
+                <tr valign="top">
+                    <td class="tdTableDefinition">numero_departamento
+                &nbsp;(<a href="#departamento">FK</a>)
+              </td><td class="tdTableDefinition">numero_departamento</td><td class="tdTableDefinition">INTEGER</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="comment">N&uacute;mero do departamento do funcion&aacute;rio.</div>
+                    </td>
+                </tr>
             </table>
             <div class="references">
                 <p class="subTitle">References</p>
@@ -527,6 +524,9 @@
                     </li>
                     <li>
                         <a href="#projeto">projeto</a> through (numero_projeto)
+                    </li>
+                    <li>
+                        <a href="#departamento">departamento</a> through (numero_departamento)
                     </li>
                 </ul>
             </div>

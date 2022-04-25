@@ -255,7 +255,7 @@ VALUES(
 NULL
 );
 
--- inserir os dados de Fernando na tabela funcinario
+-- inserir os dados de Fernando na tabela funcionario
 INSERT INTO funcionario
 VALUES(
 '33344555587',
@@ -269,7 +269,7 @@ VALUES(
 '88866555576'
 );
 
--- inserir os dados de Jennifer na tabela funcinario
+-- inserir os dados de Jennifer na tabela funcionario
 INSERT INTO funcionario
 VALUES(
 '98765432168',
@@ -283,7 +283,7 @@ VALUES(
 '88866555576'
 );
 
--- inserir os dados de João na tabela funcinario
+-- inserir os dados de João na tabela funcionario
 INSERT INTO funcionario
 VALUES(
 '12345678966',
@@ -297,7 +297,7 @@ VALUES(
 '33344555587'
 );
 
--- inserir os dados de Alice na tabela funcinario
+-- inserir os dados de Alice na tabela funcionario
 INSERT INTO funcionario
 VALUES(
 '99988777767',
@@ -311,7 +311,7 @@ VALUES(
 '98765432168'
 );
 
--- inserir os dados de Ronaldo na tabela funcinario
+-- inserir os dados de Ronaldo na tabela funcionario
 INSERT INTO funcionario
 VALUES(
 '66688444476',
@@ -325,7 +325,7 @@ VALUES(
 '33344555587'
 );
 
--- inserir os dados de Joice na tabela funcinario
+-- inserir os dados de Joice na tabela funcionario
 INSERT INTO funcionario
 VALUES(
 '45345345376',
@@ -339,7 +339,7 @@ VALUES(
 '33344555587'
 );
 
--- inserir os dados de André na tabela funcinario
+-- inserir os dados de André na tabela funcionario
 INSERT INTO funcionario
 VALUES(
 '98798798733',
@@ -465,6 +465,58 @@ VALUES(
 'Novos benefícios',
 'Mauá',
 4);
+
+-- inserir os dados dos dependentes de Fernando na tabela dependentes
+INSERT INTO dependente VALUES (
+'33344555587',
+'Alicia',
+'F',
+'1986-04-05',
+'Filha');
+
+INSERT INTO dependente VALUES (
+'33344555587',
+'Tiago',
+'M',
+'1983-10-25',
+'Filho');
+
+INSERT INTO dependente VALUES (
+'33344555587',
+'Janaína',
+'F',
+'1958-05-03',
+'Esposa');
+
+-- inserir os dados dos dependentes de Jeniffer na tabela dependentes
+INSERT INTO dependente VALUES( 
+'98765432168',
+'Antonio',
+'M',
+'1942-02-28',
+'Marido');
+
+-- inserir os dados dos dependentes de João na tabela dependentes
+INSERT INTO dependente VALUES( 
+'12345678966',
+'Michael',
+'M',
+'1988-01-04',
+'Filho');
+
+INSERT INTO dependente VALUES( 
+'12345678966',
+'Alicia',
+'F',
+'1988-12-30',
+'Filha');
+
+INSERT INTO dependente VALUES(
+'12345678966',
+'Elizabeth',
+'F',
+'1967-05-05',
+'Esposa');
 
 -- inserir os dados de João na tabela trabalha_em
 INSERT INTO trabalha_em VALUES(

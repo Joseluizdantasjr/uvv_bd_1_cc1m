@@ -31,7 +31,6 @@ CREATE TABLE funcionario (
                 endereco VARCHAR(40),
                 sexo CHAR(1),
                 salario DECIMAL(10,2),
-                numero_departamento INT NOT NULL,
                 cpf_supervisor CHAR(11),
                 PRIMARY KEY (cpf)
 );
@@ -53,8 +52,6 @@ ALTER TABLE funcionario MODIFY COLUMN endereco VARCHAR(40) COMMENT 'Endereço do
 ALTER TABLE funcionario MODIFY COLUMN sexo CHAR(1) COMMENT 'Sexo do funcionário.';
 
 ALTER TABLE funcionario MODIFY COLUMN salario DECIMAL(10, 2) COMMENT 'Salário do funcionário.';
-
-ALTER TABLE funcionario MODIFY COLUMN numero_departamento INTEGER COMMENT 'Número do departamento do funcionário.';
 
 ALTER TABLE funcionario MODIFY COLUMN cpf_supervisor CHAR(11) COMMENT 'CPF do supervisor. Será uma FK para a própria tabela (um auto-relacionamento).';
 
@@ -121,6 +118,7 @@ CREATE TABLE trabalha_em (
                 cpf_funcionario CHAR(11) NOT NULL,
                 numero_projeto INT NOT NULL,
                 horas DECIMAL(3,1) NOT NULL,
+		numero_departamento_do_funcionario NOT NUll,
                 PRIMARY KEY (cpf_funcionario, numero_projeto)
 );
 
@@ -133,6 +131,8 @@ ALTER TABLE trabalha_em MODIFY COLUMN cpf_funcionario CHAR(11) COMMENT 'CPF do f
 ALTER TABLE trabalha_em MODIFY COLUMN numero_projeto INTEGER COMMENT 'Número do projeto. Faz parte da PK desta tabela e é uma FK para a tabela projeto.';
 
 ALTER TABLE trabalha_em MODIFY COLUMN horas DECIMAL(3, 1) COMMENT 'Horas trabalhadas pelo funcionário neste projeto.';
+
+ALTER TABLE funcionario MODIFY COLUMN numero_departamento_do_funcionario INTEGER COMMENT 'Número do departamento do funcionário.';
 
 /*criar a tabela localizacoes_departamento
 criar todas as colunas 
@@ -225,11 +225,19 @@ REFERENCES departamento (numero_departamento)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
+/* tornar numero_projeto_do_funcionario uma chave estrangeira na tabela trabalha_em
+fazer ela se referir à chave primária de mesmo nome da tabela projeto*/
+ALTER TABLE trabalha_em ADD CONSTRAINT projeto_trabalha_em_fk
+FOREIGN KEY (numero_projeto_do_funcionario)
+REFERENCES projeto (numero_projeto)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
 /* tornar numero_departamento uma chave estrangeira na tabela trabalha_em
 fazer ela se referir à chave primária de mesmo nome da tabela departamento*/
-ALTER TABLE trabalha_em ADD CONSTRAINT projeto_trabalha_em_fk
-FOREIGN KEY (numero_projeto)
-REFERENCES projeto (numero_projeto)
+ALTER TABLE trabalha_em ADD CONSTRAINT departamento_trabalha_em_fk
+FOREIGN KEY (numero_departamento)
+REFERENCES departamento (numero_departamento)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
@@ -244,7 +252,6 @@ VALUES(
 'Rua do Horto, 35, São Paulo, SP',
 'M',
 55000,
-1,
 NULL
 );
 
@@ -259,7 +266,6 @@ VALUES(
 'Rua da Lapa, 34, São Paulo, SP',
 'M',
 40000,
-5,
 '88866555576'
 );
 
@@ -274,7 +280,6 @@ VALUES(
 'Av. Arthur de Lima, 54, Santo André, SP',
 'F',
 43000,
-4,
 '88866555576'
 );
 
@@ -289,7 +294,6 @@ VALUES(
 'Rua das Flores, 751, São Paulo, SP',
 'M',
 30000,
-5,
 '33344555587'
 );
 
@@ -304,7 +308,6 @@ VALUES(
 'Rua Souza Lima, 35, Curitiba, PR',
 'F',
 25000,
-4,
 '98765432168'
 );
 
@@ -318,8 +321,7 @@ VALUES(
 '1962-09-15', 
 'Rua Rebouças, 65, Piracicaba, SP',
 'M',
-38000,
-5,
+38000,,
 '33344555587'
 );
 
@@ -334,7 +336,6 @@ VALUES(
 'Av. Lucas Obes, 74, São Paulo, SP',
 'F',
 25000,
-5,
 '33344555587'
 );
 
@@ -349,7 +350,223 @@ VALUES(
 'Rua Timbeira, 35, São Paulo, SP',
 'M',
 25000,
-4,
 '98765432168'
 );
 
+-- inserir os dados do departamento Pesquisa na tabela departamento
+
+INSERT INTO departamento
+VALUES(
+5,
+'Pesqusia',
+'33344555587',
+'1988-05-22'
+);
+
+-- inserir os dados do departamento Administração na tabela departamento
+
+INSERT INTO departamento
+VALUES(
+4,
+'Administração',
+'98765432168',
+'1995-01-01'
+);
+
+-- inserir os dados do departamento Matriz na tabela departamento
+
+INSERT INTO departamento
+VALUES(
+1,
+'Matriz',
+'88866555576',
+'1981-06-19');
+
+-- inserir os dados do departamento 1 na tabela localizacoes_departamento
+INSERT INTO localizacoes_departamento
+VALUES(
+1,
+'São Paulo'
+);
+
+-- inserir os dados do departamento 4 na tabela localizacoes_departamento
+INSERT INTO localizacoes_departamento
+VALUES(
+4,
+'Mauá'
+);
+
+-- inserir os dados do departamento 5 de Santo André na tabela localizacoes_departamento
+INSERT INTO localizacoes_departamento
+VALUES(
+5,
+'Santo André'
+);
+
+-- inserir os dados do departamento 5 de Itu na tabela localizacoes_departamento
+INSERT INTO localizacoes_departamento
+VALUES(
+5,
+'Itu'
+);
+
+-- inserir os dados do departamento 5 de São Paulo na tabela localizacoes_departamento
+INSERT INTO localizacoes_departamento
+VALUES(
+5,
+'São Paulo'
+);
+
+-- inserir os dados do projeto 1 na tabela projeto
+INSERT INTO projeto
+VALUES(
+1,
+'Produto X',
+'Santo André',
+5);
+
+-- inserir os dados do projeto 2 na tabela projeto
+INSERT INTO projeto
+VALUES(
+2,
+'Produto Y',
+'Itu',
+5
+);
+
+-- inserir os dados do projeto 3 na tabela projeto
+INSERT INTO projeto
+VALUES(
+3,
+'Produto Z',
+'São Paulo',
+5);
+
+-- inserir os dados do projeto 10 na tabela projeto
+INSERT INTO projeto
+VALUES(
+10,
+'Informatização',
+'Mauá',
+4);
+
+-- inserir os dados do projeto 20 na tabela projeto
+INSERT INTO projeto
+VALUES(
+20,
+'Reorganiazãço',
+'São Paulo',
+1);
+
+-- inserir os dados do projeto 30 na tabela projeto
+INSERT INTO projeto
+VALUES(
+30,
+'Novos benefícios',
+'Mauá',
+4);
+
+-- inserir os dados de João na tabela trabalha_em
+INSERT INTO trabalha_em VALUES(
+'12345678966',
+1,
+32.5,
+5);
+
+INSERT INTO trabalha_em VALUES(
+'12345678966',
+2,
+7.5,
+5
+);
+
+-- inserir os dados de Ronaldo na tabela trabalha_em
+INSERT INTO trabalha_em VALUES(
+'66688444476',
+3,
+40,
+5);
+
+-- inserir os dados de Joice na tabela trabalha_em
+INSERT INTO trabalha_em VALUES(
+'45345345376',
+1,
+20,
+5);
+
+
+INSERT INTO trabalha_em VALUES(
+'45345345376',
+2,
+20,
+5);
+
+-- inserir os dados de Fernando na tabela trabalha_em
+INSERT INTO trabalha_em VALUES(
+'33344555587',
+2,
+10,
+5);
+
+'33344555587',
+3,
+10,
+5);
+
+INSERT INTO trabalha_em VALUES(
+'33344555587',
+10,
+10,
+5);
+
+INSERT INTO trabalha_em VALUES(
+'33344555587',
+20,
+10,
+5);
+
+-- inserir os dados de Alice na tabela trabalha_em
+INSERT INTO trabalha_em VALUES(
+'99988777767',
+30,
+30,
+4);
+
+INSERT INTO trabalha_em VALUES(
+'99988777767',
+10,
+10,
+4);
+
+-- inserir os dados de André na tabela trabalha_em
+INSERT INTO trabalha_em VALUES(
+'98798798733',
+10,
+35,
+4);
+
+INSERT INTO trabalha_em VALUES(
+'98798798733',
+30,
+5,
+4);
+
+-- inserir os dados de Jennifer na tabela trabalha_em
+INSERT INTO trabalha_em VALUES(
+'98765432168',
+30,
+20,
+4);
+
+INSERT INTO trabalha_em VALUES(
+'98765432168',
+20,
+15,
+4);
+
+-- inserir os dados de Jorge na tabela trabalha_em
+INSERT INTO trabalha_em VALUES(
+'88866555576',
+20,
+0,
+1); 

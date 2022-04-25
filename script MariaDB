@@ -568,5 +568,5 @@ INSERT INTO trabalha_em VALUES(
 INSERT INTO trabalha_em VALUES(
 '88866555576',
 20,
-0,
+NULL,
 1); 

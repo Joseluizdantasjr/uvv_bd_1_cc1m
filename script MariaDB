@@ -117,7 +117,7 @@ determinar a chave primária*/
 CREATE TABLE trabalha_em (
                 cpf_funcionario CHAR(11) NOT NULL,
                 numero_projeto INT NOT NULL,
-                horas DECIMAL(3,1) NOT NULL,
+                horas DECIMAL(3,1),
 		numero_departamento_do_funcionario NOT NUll,
                 PRIMARY KEY (cpf_funcionario, numero_projeto)
 );

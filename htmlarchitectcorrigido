@@ -498,7 +498,7 @@
                     </td>
                 </tr>
                 <tr valign="top">
-                    <td class="tdTableDefinition">horas</td><td class="tdTableDefinition">horas</td><td class="tdTableDefinition">DECIMAL(3,1)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap>NOT NULL</td>
+                    <td class="tdTableDefinition">horas</td><td class="tdTableDefinition">horas</td><td class="tdTableDefinition">DECIMAL(3,1)</td><td class="tdTableDefinition" nowrap></td><td class="tdTableDefinition" nowrap></td>
                 </tr>
                 <tr>
                     <td colspan="4">

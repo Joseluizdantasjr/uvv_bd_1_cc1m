@@ -202,14 +202,14 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
 /* tornar cpf_supervisor uma chave estrangeira na tabela funcionário
-fazer ela se referir à chave primária cpf da mesma tabelao*/
+fazer ela se referir à chave primária cpf da mesma tabela*/
 ALTER TABLE funcionario ADD CONSTRAINT funcionario_funcionario_fk
 FOREIGN KEY (cpf_supervisor)
 REFERENCES funcionario (cpf)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
-/* tornar numero_departamento uma chave estrangeira na tabela departamento
+/* tornar numero_departamento uma chave estrangeira na tabela localizacoes_departamento
 fazer ela se referir à chave primária de mesmo nome da tabela departamento*/
 ALTER TABLE localizacoes_departamento ADD CONSTRAINT departamento_localizacoes_departamento_fk
 FOREIGN KEY (numero_departamento)
@@ -225,19 +225,19 @@ REFERENCES departamento (numero_departamento)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
-/* tornar numero_projeto_do_funcionario uma chave estrangeira na tabela trabalha_em
-fazer ela se referir à chave primária de mesmo nome da tabela projeto*/
-ALTER TABLE trabalha_em ADD CONSTRAINT projeto_trabalha_em_fk
-FOREIGN KEY (numero_projeto_do_funcionario)
-REFERENCES projeto (numero_projeto)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
-
 /* tornar numero_departamento uma chave estrangeira na tabela trabalha_em
 fazer ela se referir à chave primária de mesmo nome da tabela departamento*/
 ALTER TABLE trabalha_em ADD CONSTRAINT departamento_trabalha_em_fk
 FOREIGN KEY (numero_departamento)
 REFERENCES departamento (numero_departamento)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+/* tornar numero_projeto_do_funcionario uma chave estrangeira na tabela trabalha_em
+fazer ela se referir à chave primária de mesmo nome da tabela projeto*/
+ALTER TABLE trabalha_em ADD CONSTRAINT projeto_trabalha_em_fk
+FOREIGN KEY (numero_projeto_do_funcionario)
+REFERENCES projeto (numero_projeto)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 

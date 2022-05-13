@@ -226,9 +226,9 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
 /* tornar numero_departamento uma chave estrangeira na tabela trabalha_em
-fazer ela se referir à chave primária de mesmo nome da tabela departamento*/
+fazer ela se referir à chave primária da tabela departamento*/
 ALTER TABLE trabalha_em ADD CONSTRAINT departamento_trabalha_em_fk
-FOREIGN KEY (numero_departamento)
+FOREIGN KEY (numero_departamento_do_funcionario)
 REFERENCES departamento (numero_departamento)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
@@ -236,7 +236,7 @@ ON UPDATE NO ACTION;
 /* tornar numero_projeto_do_funcionario uma chave estrangeira na tabela trabalha_em
 fazer ela se referir à chave primária de mesmo nome da tabela projeto*/
 ALTER TABLE trabalha_em ADD CONSTRAINT projeto_trabalha_em_fk
-FOREIGN KEY (numero_projeto_do_funcionario)
+FOREIGN KEY (numero_projeto)
 REFERENCES projeto (numero_projeto)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
@@ -462,7 +462,7 @@ VALUES(
 INSERT INTO projeto
 VALUES(
 30,
-'Novos benefícios',
+'Novosbenefícios',
 'Mauá',
 4);
 
